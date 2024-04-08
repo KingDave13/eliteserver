@@ -22,3 +22,13 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
+
+
+// MOONGOOSE SETUP
+
+const PORT = process.env.PORT || 6001
+mongoose.connect(process.env.MONGO_URL, {
+    dbName: 'Journals',
+}).then(() => {
+    app.listen(PORT, () => console.log(`MongoDb connected, Server running. Server Port: ${PORT}`));
+}).catch((error) => console.log(`${error} Database not connected`))
