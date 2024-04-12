@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-// import Admin from '../models/admin.js';
+import Admin from '../models/admin.js';
 import jwt from 'jsonwebtoken';
 
 export const login = async (req, res) => {
@@ -30,7 +30,7 @@ export const login = async (req, res) => {
 	// }
     try {
 		const { email, password } = req.body;
-		const user = await User.findOne({ email: email });
+		const user = await Admin.findOne({ email: email });
 		if (!user) return res.status(400).json({ msg: "User does not exist. "});
 
 		const isMatch = await bcrypt.compare(password, user.password);
