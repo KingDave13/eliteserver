@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import { EJH, EJHS, EJM, EJMS, EJI, EJPH, EJLM, EJNHS, EJSRR, EJHIV } from '../public/assets';
+
 const journalIds = [
     new mongoose.Types.ObjectId(),
     new mongoose.Types.ObjectId(),
