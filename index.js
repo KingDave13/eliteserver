@@ -8,6 +8,8 @@ import helmet from "helmet";
 import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Journals from './models/journals.js';
+import { journals } from "./data/index.js";
 
 import authRoutes from './routes/auth.js';
 
@@ -37,4 +39,6 @@ mongoose.connect(process.env.MONGO_URL, {
     dbName: 'Journals',
 }).then(() => {
     app.listen(PORT, () => console.log(`MongoDb connected, Server running. Server Port: ${PORT}`));
+
+    Journals.insertMany(journals);
 }).catch((error) => console.log(`${error} Database not connected`))

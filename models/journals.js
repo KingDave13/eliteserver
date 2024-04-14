@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const JournalSchema = new mongoose.Schema(
     {   
         title: {
-            type: string,
+            type: String,
         },
         desc: {
 			type: String,
