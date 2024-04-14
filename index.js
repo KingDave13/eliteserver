@@ -12,6 +12,7 @@ import Journals from './models/journals.js';
 import { journals } from "./data/index.js";
 
 import authRoutes from './routes/auth.js';
+import journalsRoute from './routes/journals.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -31,6 +32,7 @@ app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 /* ROUTES*/
 
 app.use('/auth', authRoutes);
+app.use('/journals', journalsRoute);
 
 // MOONGOOSE SETUP
 
@@ -40,5 +42,5 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => {
     app.listen(PORT, () => console.log(`MongoDb connected, Server running. Server Port: ${PORT}`));
 
-    Journals.insertMany(journals);
+    // Journals.insertMany(journals);
 }).catch((error) => console.log(`${error} Database not connected`))
